@@ -39,6 +39,6 @@ def pygen_test(url, file):
 
 
 if __name__ =='__main__':
-    url= 'https://stepik.org/media/attachments/lesson/569748/tests_2310066.zip'
+    url= 'https://stepik.org/media/attachments/lesson/569748/tests_2310066.zip' # Доступная ссылка из открытого урока (https://stepik.org/lesson/569748/step/5?unit=564262)
     file = 'test.zip'
     pygen_test(url=url, file=file)
