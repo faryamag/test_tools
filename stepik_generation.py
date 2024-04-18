@@ -2,9 +2,12 @@ import requests
 import zipfile
 import sys
 from tempfile import TemporaryFile
+from my_module_name import *  # my_module_name - имя файла 'my_module_name.py', содержащий код решения
 
 
-def pygen_test(url, file):
+
+def pygen_test(url, file='test.zip', show_error_task_body=False, **obj):
+
     tasks = {}
 
     with open(file, 'wb') as zip_file:
@@ -36,9 +39,12 @@ def pygen_test(url, file):
                 print(f'Ошибка сравнения результата в задании: {name}')
                 print(f"Ожидается результат: \n{task['answear']}")
                 print(f"Получен результат: \n{temp.read().strip()}")
-
+                if show_error_task:
+                    print(f'_____Task number{name}______')
+                    print(task['task'])
+                    print(f'___End of task number{name}______')
 
 if __name__ =='__main__':
     url= 'https://stepik.org/media/attachments/lesson/569748/tests_2310066.zip' # Доступная ссылка из открытого урока (https://stepik.org/lesson/569748/step/5?unit=564262)
     file = 'test.zip'
-    pygen_test(url=url, file=file)
+    pygen_test(url=url, file=file, show_error_task_body=True)
